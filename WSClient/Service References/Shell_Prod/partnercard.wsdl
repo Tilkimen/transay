@@ -1,0 +1,4114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="PCARD_GETPROCESSNAME">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_GETPROCESSNAMEResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_GETPROCESSNAMEResult" type="tns:ArrayOfProcess_name" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfProcess_name">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="process_name" nillable="true" type="tns:process_name" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="process_name">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:baseClass">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="PROCESS_NM" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="PROCESS_TXT" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="baseClass" abstract="true" />
+      <s:element name="PCARD_CARD_FILTER_DETAIL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sts" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="txt" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dsc" nillable="true" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_CARD_FILTER_DETAILResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_CARD_FILTER_DETAILResult" type="tns:ArrayOfCARD_InfoAndCredit" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCARD_InfoAndCredit">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CARD_InfoAndCredit" nillable="true" type="tns:CARD_InfoAndCredit" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CARD_InfoAndCredit">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ConditionOrtakSinif">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="cardInfo" type="tns:CardInfo" />
+              <s:element minOccurs="0" maxOccurs="1" name="cardCredit" type="tns:CardCredit" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ConditionOrtakSinif">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ConditionNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ConditionMesaj" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Basarili" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CardInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Card">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="sts" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="txt" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="expDT" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Card" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:baseClass">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="CardNo" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CardCredit">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:baseClass">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="lmt" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="dfl_amt" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="bln" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="dsc" nillable="true" type="s:decimal" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="PCARD_RETURN_VALUE_LIST">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_RETURN_VALUE_LISTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_RETURN_VALUE_LISTResult" type="tns:ArrayOfCard_return_value" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCard_return_value">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="card_return_value" nillable="true" type="tns:card_return_value" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="card_return_value">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:baseClass">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="RET_VAL" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="RET_TXT" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="STS" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="PCARD_REMOVE_CARD_CREDIT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardNo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="amt" nillable="true" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="expln" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_REMOVE_CARD_CREDITResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_REMOVE_CARD_CREDITResult" type="tns:Sonuc" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Sonuc">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ConditionOrtakSinif">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="resp" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="PCARD_CARD_GETCARDBALANCE_HISTORY">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardNo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="sdt" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="edt" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="trn" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="expln" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="txt" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCardBalanceHistory">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CardBalanceHistory" nillable="true" type="tns:CardBalanceHistory" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CardBalanceHistory">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Card">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="CRD_AMT" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="DBT_AMT" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="BLN_AMT" nillable="true" type="s:decimal" />
+              <s:element minOccurs="0" maxOccurs="1" name="TRN_TYP_CD" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="ADT_DT" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="NOTE" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CARD_TXT" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="PCARD_CARD_GETCARDBALANCE_HISTORYResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_CARD_GETCARDBALANCE_HISTORYResult" type="tns:ArrayOfCardBalanceHistory" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_CARD_GETCARDBALANCEDET_HISTORY">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardNo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="sdt" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="edt" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="trn" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="expln" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="txt" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCardBalanceDetHistory">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CardBalanceDetHistory" nillable="true" type="tns:CardBalanceDetHistory" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CardBalanceDetHistory">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Card">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="CRD_AMT" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="DBT_AMT" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="BLN_AMT" nillable="true" type="s:decimal" />
+              <s:element minOccurs="0" maxOccurs="1" name="TRN_TYP_CD" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="ADT_DT" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="ADT_USR" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="NOTE" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CARD_TXT" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="PCARD_CARD_GETCARDBALANCEDET_HISTORYResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_CARD_GETCARDBALANCEDET_HISTORYResult" type="tns:ArrayOfCardBalanceDetHistory" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_CARD_GETLOG">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="sdt" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="edt" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="prcs" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="usrid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pval" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTransactionLog">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TransactionLog" nillable="true" type="tns:TransactionLog" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TransactionLog">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:baseClass">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="LOG_SEQ" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="START_DT" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="END_DT" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="PROCESS" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CUST_CD" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="USR_ID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="USR_IP" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="PVAL" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="RET_VAL" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="PCARD_CARD_GETLOGResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_CARD_GETLOGResult" type="tns:ArrayOfTransactionLog" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_CUSTOMER_GET_DETAIL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_CUSTOMER_GET_DETAILResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_CUSTOMER_GET_DETAILResult" type="tns:CustomerInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CustomerInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ConditionOrtakSinif">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="crd" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="dbt" nillable="true" type="s:decimal" />
+              <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="sts" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="bln" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="dsc" nillable="true" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="lmt" nillable="true" type="s:decimal" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="PCARD_CARD_GET_DETAIL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardNO" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_CARD_GET_DETAILResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_CARD_GET_DETAILResult" type="tns:CARD_InfoAndCredit" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_CARD_SET_ALL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardInfoandCredit" type="tns:CARD_InfoAndCredit" />
+            <s:element minOccurs="0" maxOccurs="1" name="creditxt" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_CARD_SET_ALLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_CARD_SET_ALLResult" type="tns:Sonuc" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_ADD_CARD_DFLT_CREDIT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="card" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="txt" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_ADD_CARD_DFLT_CREDITResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_ADD_CARD_DFLT_CREDITResult" type="tns:Sonuc" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_CHANGE_PASSWORD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newpwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_CHANGE_PASSWORDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_CHANGE_PASSWORDResult" type="tns:Sonuc" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_CARD_SET_TXT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardNO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="txt" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_CARD_SET_TXTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_CARD_SET_TXTResult" type="tns:Sonuc" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_CARD_SET_DFLT_CRD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardNO" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lmt" nillable="true" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_CARD_SET_DFLT_CRDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_CARD_SET_DFLT_CRDResult" type="tns:Sonuc" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_CARD_SET_CUSTOMER_MAX_LMT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lmt" nillable="true" type="s:decimal" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_CARD_SET_CUSTOMER_MAX_LMTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_CARD_SET_CUSTOMER_MAX_LMTResult" type="tns:Sonuc" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_CUSTOMER_ASK_BALANCE">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_CUSTOMER_ASK_BALANCEResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_CUSTOMER_ASK_BALANCEResult" type="tns:Balance" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Balance">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ConditionOrtakSinif">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="amt" nillable="true" type="s:decimal" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="PCARD_CARD_ASK_BALANCE">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardNO" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_CARD_ASK_BALANCEResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_CARD_ASK_BALANCEResult" type="tns:Balance" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_CARD_ADD_CREDIT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardNO" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="crd" nillable="true" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="txt" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_CARD_ADD_CREDITResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_CARD_ADD_CREDITResult" type="tns:Sonuc" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_CARD_DISABLE">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardNO" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_CARD_DISABLEResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_CARD_DISABLEResult" type="tns:Sonuc" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_CARD_BLACKLIST">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardNO" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_CARD_BLACKLISTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_CARD_BLACKLISTResult" type="tns:Sonuc" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_CARD_WHITELIST">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardNO" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_CARD_WHITELISTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_CARD_WHITELISTResult" type="tns:Sonuc" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_CARD_TRANSFER_CREDIT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="fromcardNO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tocardNO" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="crd" nillable="true" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="expln" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_CARD_TRANSFER_CREDITResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_CARD_TRANSFER_CREDITResult" type="tns:Sonuc" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_CARD_SET_DISCOUNT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardNO" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dsc" nillable="true" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_CARD_SET_DISCOUNTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_CARD_SET_DISCOUNTResult" type="tns:Sonuc" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_ZERO_CARD_CREDIT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardNO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="txt" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_ZERO_CARD_CREDITResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_ZERO_CARD_CREDITResult" type="tns:Sonuc" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_BATCH_UPDATE_GET_XMLS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BatchUpdateXml">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AddDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfBatchUpdateXml">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BatchUpdateXml" nillable="true" type="tns:BatchUpdateXml" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PCARD_BATCH_UPDATE_GET_XMLSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_BATCH_UPDATE_GET_XMLSResult" type="tns:ArrayOfBatchUpdateXml" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_BATCH_UPDATE_XML_INS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="xml_filename" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="xml_content" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_BATCH_UPDATE_XML_INSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_BATCH_UPDATE_XML_INSResult" type="tns:Sonuc" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_BATCH_UPDATE_XML_DEL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="xml_fileno" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_BATCH_UPDATE_XML_DELResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_BATCH_UPDATE_XML_DELResult" type="tns:Sonuc" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_BATCH_UPDATE_INS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="udt" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="xml_fileno" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_BATCH_UPDATE_INSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_BATCH_UPDATE_INSResult" type="tns:Sonuc" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_BATCH_UPDATE_UPD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="udt" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="sequence" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="xml_fileno" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_BATCH_UPDATE_UPDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_BATCH_UPDATE_UPDResult" type="tns:Sonuc" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_BATCH_UPDATE_GET_REC_ALL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BatchUpdateMasterInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Sequence" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="XmlFileNo" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:BatchUpdateStatus" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompletedCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FailedCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="AdtDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="AdtUser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Details" type="tns:ArrayOfBatchUpdateDetailInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="BatchUpdateStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="Loaded" />
+          <s:enumeration value="InProcess" />
+          <s:enumeration value="Completed" />
+          <s:enumeration value="Failed" />
+          <s:enumeration value="NotProcessed" />
+          <s:enumeration value="Deleted" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfBatchUpdateDetailInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BatchUpdateDetailInfo" nillable="true" type="tns:BatchUpdateDetailInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BatchUpdateDetailInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Sequence" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RowId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardStatus" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DefaultCardAmount" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="DiscountPercentage" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardInfo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UpdateTxt" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateAmount" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdateDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:BatchUpdateStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResetFlag" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfBatchUpdateMasterInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BatchUpdateMasterInfo" nillable="true" type="tns:BatchUpdateMasterInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PCARD_BATCH_UPDATE_GET_REC_ALLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_BATCH_UPDATE_GET_REC_ALLResult" type="tns:ArrayOfBatchUpdateMasterInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_BATCH_UPDATE_GET_REC_DETAILS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="xml_fileno" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sequence" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_BATCH_UPDATE_GET_REC_DETAILSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_BATCH_UPDATE_GET_REC_DETAILSResult" type="tns:ArrayOfBatchUpdateDetailInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="test">
+        <s:complexType />
+      </s:element>
+      <s:element name="testResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="PCARD_BATCH_UPDATES_GET_FROM_XMLNO">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="xml_fileno" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_BATCH_UPDATES_GET_FROM_XMLNOResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_BATCH_UPDATES_GET_FROM_XMLNOResult" type="tns:ArrayOfBatchUpdateMasterInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_BATCH_UPDATE_DEL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="sequence" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="xml_fileno" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_BATCH_UPDATE_DELResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_BATCH_UPDATE_DELResult" type="tns:Sonuc" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_FORGET_PASSWORD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_FORGET_PASSWORDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_FORGET_PASSWORDResult" type="tns:Sonuc" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_GET_CUSTOMER_SALES">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="sdt" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="edt" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="plate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="card" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="reseller_branch_cd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SalesTransactionInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="REC_SEQ" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUST_CD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUST_NM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RTL_OTLT_CD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RTL_OTLT_NM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PRV_NM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TRANS_DT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CARD_NO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PLATE_CD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CARD_TXT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MKT_NM" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="VOLUME" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="TXN_UNIT_PRC" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="TXN_TOT_AMT" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="UNIT_PRC" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="SLS_TOT_AMT" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="CUST_DSC_PCT" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="TOT_CUST_DSC_AMT" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="TXN_DSC_PCT" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="TXN_DSC_AMT" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="CUST_DSC_AMT" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="SITE_DSC_PCT" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="SITE_DSC_AMT" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="DSC_TOT_PCT" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="INV_NO" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSalesTransactionInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SalesTransactionInfo" nillable="true" type="tns:SalesTransactionInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PCARD_GET_CUSTOMER_SALESResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_GET_CUSTOMER_SALESResult" type="tns:ArrayOfSalesTransactionInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_GET_RESELLER_SUB_CUSTOMERS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResellerSubCustLimitInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ResellerSubCodeLimitDetCollection" type="tns:ArrayOfResellerSubCustLimitDetail" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AllLimit" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="RemainLimit" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="LoadedAmt" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Percentage" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfResellerSubCustLimitDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ResellerSubCustLimitDetail" nillable="true" type="tns:ResellerSubCustLimitDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ResellerSubCustLimitDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CustCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProcessDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProcessInfo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProcessAmount" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="BalanceAmount" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfResellerSubCustLimitInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ResellerSubCustLimitInfo" nillable="true" type="tns:ResellerSubCustLimitInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PCARD_GET_RESELLER_SUB_CUSTOMERSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_GET_RESELLER_SUB_CUSTOMERSResult" type="tns:ArrayOfResellerSubCustLimitInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_GET_RESELLERORNOT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_GET_RESELLERORNOTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_GET_RESELLERORNOTResult" type="tns:CustTypeInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CustTypeInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ConditionOrtakSinif">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="CustType" type="tns:CustomerTypes" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="CustomerTypes">
+        <s:restriction base="s:string">
+          <s:enumeration value="Customer" />
+          <s:enumeration value="Reseller" />
+          <s:enumeration value="CustomerBranch" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="PCARD_SET_RESELLER_SUB_CUSTOMER_LIMIT">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="reseller_branch_cd" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="limit" type="s:decimal" />
+            <s:element minOccurs="0" maxOccurs="1" name="txt_load" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="newlimitisbigger" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_SET_RESELLER_SUB_CUSTOMER_LIMITResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_SET_RESELLER_SUB_CUSTOMER_LIMITResult" type="tns:Sonuc" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_GET_RESELLER_CUSTOMERINFO">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_GET_RESELLER_CUSTOMERINFOResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_GET_RESELLER_CUSTOMERINFOResult" type="tns:ResellerCustomerInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResellerCustomerInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ConditionOrtakSinif">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="RslCustCode" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="RslCustName" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="RslCustTopLimit" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="RslBlnAmt" type="s:decimal" />
+              <s:element minOccurs="1" maxOccurs="1" name="RslDispatchedLimit" type="s:decimal" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="PCARD_GET_RESELLER_SUBCUSTOMER_CREDITDEBIT_DETAIL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="reseller_branch_cd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResellerSubCodeCreditDebitDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CUST_CD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUST_NM" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PROCESS_DT" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CREDIT_AMT" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="DEBIT_AMT" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="PROCESS_INFO" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BALANCE_AMT" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="LOAD_INFO" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfResellerSubCodeCreditDebitDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ResellerSubCodeCreditDebitDetail" nillable="true" type="tns:ResellerSubCodeCreditDebitDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PCARD_GET_RESELLER_SUBCUSTOMER_CREDITDEBIT_DETAILResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_GET_RESELLER_SUBCUSTOMER_CREDITDEBIT_DETAILResult" type="tns:ArrayOfResellerSubCodeCreditDebitDetail" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_GET_INVOICE_PDF_FOR_CUSTOMER">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="reseller_branch_cd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PdfFileListResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ListOfPdfFiles" type="tns:ArrayOfPdfFileInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProcessResult" type="tns:Sonuc" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPdfFileInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PdfFileInfo" nillable="true" type="tns:PdfFileInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PdfFileInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CUST_CD" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="INV_NO" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PDF_DATE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PDF_FNAME" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TOT_AMT" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PCARD_GET_INVOICE_PDF_FOR_CUSTOMERResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_GET_INVOICE_PDF_FOR_CUSTOMERResult" type="tns:PdfFileListResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_GETPDFFILESTREAM">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pdf_filename" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PdfStreamResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PdfResponse" type="tns:PdfStreamInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PdfStreamInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PdfStream" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProcessResult" type="tns:ConditionOrtakSinif" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PCARD_GETPDFFILESTREAMResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_GETPDFFILESTREAMResult" type="tns:PdfStreamResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filename" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFileResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_GET_RESELLER_SUBCUST_STATUS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="reseller_branch_cd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ResellerSubCodeStatusResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ListofSubCodeStatusInfo" type="tns:ArrayOfResellerSubCodeStatusInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProcessResult" type="tns:Sonuc" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfResellerSubCodeStatusInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ResellerSubCodeStatusInfo" nillable="true" type="tns:ResellerSubCodeStatusInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ResellerSubCodeStatusInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CustCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BalanceAmount" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PCARD_GET_RESELLER_SUBCUST_STATUSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_GET_RESELLER_SUBCUST_STATUSResult" type="tns:ResellerSubCodeStatusResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_SET_RESELLER_SUB_CUSTOMER_STATUS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="reseller_branch_cd" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="reseller_branch_status_code" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_SET_RESELLER_SUB_CUSTOMER_STATUSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_SET_RESELLER_SUB_CUSTOMER_STATUSResult" type="tns:Sonuc" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PCARD_GET_CUSTOMER_SALES_WITH_INVOICE_DATE">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="custID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="sdt" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="edt" nillable="true" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="plate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="card" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="reseller_branch_cd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SalesTransactionInfoWithInvDt">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="REC_SEQ" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUST_CD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CUST_NM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RTL_OTLT_CD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RTL_OTLT_NM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PRV_NM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TRANS_DT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CARD_NO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PLATE_CD" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CARD_TXT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MKT_NM" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="VOLUME" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="TXN_UNIT_PRC" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="TXN_TOT_AMT" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="UNIT_PRC" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="SLS_TOT_AMT" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="CUST_DSC_PCT" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="TOT_CUST_DSC_AMT" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="TXN_DSC_PCT" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="TXN_DSC_AMT" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="CUST_DSC_AMT" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="SITE_DSC_PCT" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="SITE_DSC_AMT" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="DSC_TOT_PCT" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="INV_NO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="INV_DT" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSalesTransactionInfoWithInvDt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SalesTransactionInfoWithInvDt" nillable="true" type="tns:SalesTransactionInfoWithInvDt" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PCARD_GET_CUSTOMER_SALES_WITH_INVOICE_DATEResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PCARD_GET_CUSTOMER_SALES_WITH_INVOICE_DATEResult" type="tns:ArrayOfSalesTransactionInfoWithInvDt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArrayOfProcess_name" nillable="true" type="tns:ArrayOfProcess_name" />
+      <s:element name="ArrayOfCard_return_value" nillable="true" type="tns:ArrayOfCard_return_value" />
+      <s:element name="CustomerInfo" nillable="true" type="tns:CustomerInfo" />
+      <s:element name="CARD_InfoAndCredit" nillable="true" type="tns:CARD_InfoAndCredit" />
+      <s:element name="Sonuc" nillable="true" type="tns:Sonuc" />
+      <s:element name="Balance" nillable="true" type="tns:Balance" />
+      <s:element name="ArrayOfBatchUpdateXml" nillable="true" type="tns:ArrayOfBatchUpdateXml" />
+      <s:element name="ArrayOfBatchUpdateMasterInfo" nillable="true" type="tns:ArrayOfBatchUpdateMasterInfo" />
+      <s:element name="ArrayOfBatchUpdateDetailInfo" nillable="true" type="tns:ArrayOfBatchUpdateDetailInfo" />
+      <s:element name="ArrayOfResellerSubCustLimitInfo" nillable="true" type="tns:ArrayOfResellerSubCustLimitInfo" />
+      <s:element name="CustTypeInfo" nillable="true" type="tns:CustTypeInfo" />
+      <s:element name="ResellerCustomerInfo" nillable="true" type="tns:ResellerCustomerInfo" />
+      <s:element name="ArrayOfResellerSubCodeCreditDebitDetail" nillable="true" type="tns:ArrayOfResellerSubCodeCreditDebitDetail" />
+      <s:element name="PdfFileListResponse" nillable="true" type="tns:PdfFileListResponse" />
+      <s:element name="PdfStreamResponse" nillable="true" type="tns:PdfStreamResponse" />
+      <s:element name="base64Binary" nillable="true" type="s:base64Binary" />
+      <s:element name="ResellerSubCodeStatusResponse" nillable="true" type="tns:ResellerSubCodeStatusResponse" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="PCARD_GETPROCESSNAMESoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_GETPROCESSNAME" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GETPROCESSNAMESoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_GETPROCESSNAMEResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_FILTER_DETAILSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_CARD_FILTER_DETAIL" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_FILTER_DETAILSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_CARD_FILTER_DETAILResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_RETURN_VALUE_LISTSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_RETURN_VALUE_LIST" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_RETURN_VALUE_LISTSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_RETURN_VALUE_LISTResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_REMOVE_CARD_CREDITSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_REMOVE_CARD_CREDIT" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_REMOVE_CARD_CREDITSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_REMOVE_CARD_CREDITResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_GETCARDBALANCE_HISTORYSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_CARD_GETCARDBALANCE_HISTORY" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_GETCARDBALANCE_HISTORYSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_CARD_GETCARDBALANCE_HISTORYResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_GETCARDBALANCEDET_HISTORYSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_CARD_GETCARDBALANCEDET_HISTORY" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_GETCARDBALANCEDET_HISTORYSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_CARD_GETCARDBALANCEDET_HISTORYResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_GETLOGSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_CARD_GETLOG" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_GETLOGSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_CARD_GETLOGResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CUSTOMER_GET_DETAILSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_CUSTOMER_GET_DETAIL" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CUSTOMER_GET_DETAILSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_CUSTOMER_GET_DETAILResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_GET_DETAILSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_CARD_GET_DETAIL" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_GET_DETAILSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_CARD_GET_DETAILResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_SET_ALLSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_CARD_SET_ALL" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_SET_ALLSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_CARD_SET_ALLResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_ADD_CARD_DFLT_CREDITSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_ADD_CARD_DFLT_CREDIT" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_ADD_CARD_DFLT_CREDITSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_ADD_CARD_DFLT_CREDITResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CHANGE_PASSWORDSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_CHANGE_PASSWORD" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CHANGE_PASSWORDSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_CHANGE_PASSWORDResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_SET_TXTSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_CARD_SET_TXT" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_SET_TXTSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_CARD_SET_TXTResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_SET_DFLT_CRDSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_CARD_SET_DFLT_CRD" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_SET_DFLT_CRDSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_CARD_SET_DFLT_CRDResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_SET_CUSTOMER_MAX_LMTSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_CARD_SET_CUSTOMER_MAX_LMT" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_SET_CUSTOMER_MAX_LMTSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_CARD_SET_CUSTOMER_MAX_LMTResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CUSTOMER_ASK_BALANCESoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_CUSTOMER_ASK_BALANCE" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CUSTOMER_ASK_BALANCESoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_CUSTOMER_ASK_BALANCEResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_ASK_BALANCESoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_CARD_ASK_BALANCE" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_ASK_BALANCESoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_CARD_ASK_BALANCEResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_ADD_CREDITSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_CARD_ADD_CREDIT" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_ADD_CREDITSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_CARD_ADD_CREDITResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_DISABLESoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_CARD_DISABLE" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_DISABLESoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_CARD_DISABLEResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_BLACKLISTSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_CARD_BLACKLIST" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_BLACKLISTSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_CARD_BLACKLISTResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_WHITELISTSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_CARD_WHITELIST" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_WHITELISTSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_CARD_WHITELISTResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_TRANSFER_CREDITSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_CARD_TRANSFER_CREDIT" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_TRANSFER_CREDITSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_CARD_TRANSFER_CREDITResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_SET_DISCOUNTSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_CARD_SET_DISCOUNT" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_SET_DISCOUNTSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_CARD_SET_DISCOUNTResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_ZERO_CARD_CREDITSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_ZERO_CARD_CREDIT" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_ZERO_CARD_CREDITSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_ZERO_CARD_CREDITResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_GET_XMLSSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_BATCH_UPDATE_GET_XMLS" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_GET_XMLSSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_BATCH_UPDATE_GET_XMLSResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_XML_INSSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_BATCH_UPDATE_XML_INS" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_XML_INSSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_BATCH_UPDATE_XML_INSResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_XML_DELSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_BATCH_UPDATE_XML_DEL" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_XML_DELSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_BATCH_UPDATE_XML_DELResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_INSSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_BATCH_UPDATE_INS" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_INSSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_BATCH_UPDATE_INSResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_UPDSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_BATCH_UPDATE_UPD" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_UPDSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_BATCH_UPDATE_UPDResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_GET_REC_ALLSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_BATCH_UPDATE_GET_REC_ALL" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_GET_REC_ALLSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_BATCH_UPDATE_GET_REC_ALLResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_GET_REC_DETAILSSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_BATCH_UPDATE_GET_REC_DETAILS" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_GET_REC_DETAILSSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_BATCH_UPDATE_GET_REC_DETAILSResponse" />
+  </wsdl:message>
+  <wsdl:message name="testSoapIn">
+    <wsdl:part name="parameters" element="tns:test" />
+  </wsdl:message>
+  <wsdl:message name="testSoapOut">
+    <wsdl:part name="parameters" element="tns:testResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATES_GET_FROM_XMLNOSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_BATCH_UPDATES_GET_FROM_XMLNO" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATES_GET_FROM_XMLNOSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_BATCH_UPDATES_GET_FROM_XMLNOResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_DELSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_BATCH_UPDATE_DEL" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_DELSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_BATCH_UPDATE_DELResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_FORGET_PASSWORDSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_FORGET_PASSWORD" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_FORGET_PASSWORDSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_FORGET_PASSWORDResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_CUSTOMER_SALESSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_GET_CUSTOMER_SALES" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_CUSTOMER_SALESSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_GET_CUSTOMER_SALESResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_RESELLER_SUB_CUSTOMERSSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_GET_RESELLER_SUB_CUSTOMERS" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_RESELLER_SUB_CUSTOMERSSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_GET_RESELLER_SUB_CUSTOMERSResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_RESELLERORNOTSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_GET_RESELLERORNOT" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_RESELLERORNOTSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_GET_RESELLERORNOTResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_SET_RESELLER_SUB_CUSTOMER_LIMITSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_SET_RESELLER_SUB_CUSTOMER_LIMIT" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_SET_RESELLER_SUB_CUSTOMER_LIMITSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_SET_RESELLER_SUB_CUSTOMER_LIMITResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_RESELLER_CUSTOMERINFOSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_GET_RESELLER_CUSTOMERINFO" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_RESELLER_CUSTOMERINFOSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_GET_RESELLER_CUSTOMERINFOResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_RESELLER_SUBCUSTOMER_CREDITDEBIT_DETAILSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_GET_RESELLER_SUBCUSTOMER_CREDITDEBIT_DETAIL" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_RESELLER_SUBCUSTOMER_CREDITDEBIT_DETAILSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_GET_RESELLER_SUBCUSTOMER_CREDITDEBIT_DETAILResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_INVOICE_PDF_FOR_CUSTOMERSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_GET_INVOICE_PDF_FOR_CUSTOMER" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_INVOICE_PDF_FOR_CUSTOMERSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_GET_INVOICE_PDF_FOR_CUSTOMERResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GETPDFFILESTREAMSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_GETPDFFILESTREAM" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GETPDFFILESTREAMSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_GETPDFFILESTREAMResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFileSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFile" />
+  </wsdl:message>
+  <wsdl:message name="GetFileSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_RESELLER_SUBCUST_STATUSSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_GET_RESELLER_SUBCUST_STATUS" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_RESELLER_SUBCUST_STATUSSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_GET_RESELLER_SUBCUST_STATUSResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_SET_RESELLER_SUB_CUSTOMER_STATUSSoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_SET_RESELLER_SUB_CUSTOMER_STATUS" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_SET_RESELLER_SUB_CUSTOMER_STATUSSoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_SET_RESELLER_SUB_CUSTOMER_STATUSResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_CUSTOMER_SALES_WITH_INVOICE_DATESoapIn">
+    <wsdl:part name="parameters" element="tns:PCARD_GET_CUSTOMER_SALES_WITH_INVOICE_DATE" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_CUSTOMER_SALES_WITH_INVOICE_DATESoapOut">
+    <wsdl:part name="parameters" element="tns:PCARD_GET_CUSTOMER_SALES_WITH_INVOICE_DATEResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GETPROCESSNAMEHttpGetIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GETPROCESSNAMEHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfProcess_name" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_RETURN_VALUE_LISTHttpGetIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_RETURN_VALUE_LISTHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCard_return_value" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CUSTOMER_GET_DETAILHttpGetIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CUSTOMER_GET_DETAILHttpGetOut">
+    <wsdl:part name="Body" element="tns:CustomerInfo" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_GET_DETAILHttpGetIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="cardNO" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_GET_DETAILHttpGetOut">
+    <wsdl:part name="Body" element="tns:CARD_InfoAndCredit" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_ADD_CARD_DFLT_CREDITHttpGetIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="card" type="s:string" />
+    <wsdl:part name="txt" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_ADD_CARD_DFLT_CREDITHttpGetOut">
+    <wsdl:part name="Body" element="tns:Sonuc" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CHANGE_PASSWORDHttpGetIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="newpwd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CHANGE_PASSWORDHttpGetOut">
+    <wsdl:part name="Body" element="tns:Sonuc" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_SET_TXTHttpGetIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="cardNO" type="s:string" />
+    <wsdl:part name="txt" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_SET_TXTHttpGetOut">
+    <wsdl:part name="Body" element="tns:Sonuc" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CUSTOMER_ASK_BALANCEHttpGetIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CUSTOMER_ASK_BALANCEHttpGetOut">
+    <wsdl:part name="Body" element="tns:Balance" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_ASK_BALANCEHttpGetIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="cardNO" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_ASK_BALANCEHttpGetOut">
+    <wsdl:part name="Body" element="tns:Balance" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_DISABLEHttpGetIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="cardNO" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_DISABLEHttpGetOut">
+    <wsdl:part name="Body" element="tns:Sonuc" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_BLACKLISTHttpGetIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="cardNO" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_BLACKLISTHttpGetOut">
+    <wsdl:part name="Body" element="tns:Sonuc" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_WHITELISTHttpGetIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="cardNO" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_WHITELISTHttpGetOut">
+    <wsdl:part name="Body" element="tns:Sonuc" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_ZERO_CARD_CREDITHttpGetIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="cardNO" type="s:string" />
+    <wsdl:part name="txt" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_ZERO_CARD_CREDITHttpGetOut">
+    <wsdl:part name="Body" element="tns:Sonuc" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_GET_XMLSHttpGetIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_GET_XMLSHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfBatchUpdateXml" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_XML_INSHttpGetIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="xml_filename" type="s:string" />
+    <wsdl:part name="xml_content" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_XML_INSHttpGetOut">
+    <wsdl:part name="Body" element="tns:Sonuc" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_XML_DELHttpGetIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="xml_fileno" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_XML_DELHttpGetOut">
+    <wsdl:part name="Body" element="tns:Sonuc" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_INSHttpGetIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="udt" type="s:string" />
+    <wsdl:part name="xml_fileno" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_INSHttpGetOut">
+    <wsdl:part name="Body" element="tns:Sonuc" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_UPDHttpGetIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="udt" type="s:string" />
+    <wsdl:part name="sequence" type="s:string" />
+    <wsdl:part name="xml_fileno" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_UPDHttpGetOut">
+    <wsdl:part name="Body" element="tns:Sonuc" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_GET_REC_ALLHttpGetIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_GET_REC_ALLHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfBatchUpdateMasterInfo" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_GET_REC_DETAILSHttpGetIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="xml_fileno" type="s:string" />
+    <wsdl:part name="sequence" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_GET_REC_DETAILSHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfBatchUpdateDetailInfo" />
+  </wsdl:message>
+  <wsdl:message name="testHttpGetIn" />
+  <wsdl:message name="testHttpGetOut" />
+  <wsdl:message name="PCARD_BATCH_UPDATES_GET_FROM_XMLNOHttpGetIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="xml_fileno" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATES_GET_FROM_XMLNOHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfBatchUpdateMasterInfo" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_DELHttpGetIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="sequence" type="s:string" />
+    <wsdl:part name="xml_fileno" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_DELHttpGetOut">
+    <wsdl:part name="Body" element="tns:Sonuc" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_FORGET_PASSWORDHttpGetIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="email" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_FORGET_PASSWORDHttpGetOut">
+    <wsdl:part name="Body" element="tns:Sonuc" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_RESELLER_SUB_CUSTOMERSHttpGetIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_RESELLER_SUB_CUSTOMERSHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfResellerSubCustLimitInfo" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_RESELLERORNOTHttpGetIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_RESELLERORNOTHttpGetOut">
+    <wsdl:part name="Body" element="tns:CustTypeInfo" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_SET_RESELLER_SUB_CUSTOMER_LIMITHttpGetIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="reseller_branch_cd" type="s:string" />
+    <wsdl:part name="limit" type="s:string" />
+    <wsdl:part name="txt_load" type="s:string" />
+    <wsdl:part name="newlimitisbigger" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_SET_RESELLER_SUB_CUSTOMER_LIMITHttpGetOut">
+    <wsdl:part name="Body" element="tns:Sonuc" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_RESELLER_CUSTOMERINFOHttpGetIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_RESELLER_CUSTOMERINFOHttpGetOut">
+    <wsdl:part name="Body" element="tns:ResellerCustomerInfo" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_RESELLER_SUBCUSTOMER_CREDITDEBIT_DETAILHttpGetIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="reseller_branch_cd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_RESELLER_SUBCUSTOMER_CREDITDEBIT_DETAILHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfResellerSubCodeCreditDebitDetail" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_INVOICE_PDF_FOR_CUSTOMERHttpGetIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="reseller_branch_cd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_INVOICE_PDF_FOR_CUSTOMERHttpGetOut">
+    <wsdl:part name="Body" element="tns:PdfFileListResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GETPDFFILESTREAMHttpGetIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="pdf_filename" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GETPDFFILESTREAMHttpGetOut">
+    <wsdl:part name="Body" element="tns:PdfStreamResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFileHttpGetIn">
+    <wsdl:part name="filename" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFileHttpGetOut">
+    <wsdl:part name="Body" element="tns:base64Binary" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_RESELLER_SUBCUST_STATUSHttpGetIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="reseller_branch_cd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_RESELLER_SUBCUST_STATUSHttpGetOut">
+    <wsdl:part name="Body" element="tns:ResellerSubCodeStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_SET_RESELLER_SUB_CUSTOMER_STATUSHttpGetIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="reseller_branch_cd" type="s:string" />
+    <wsdl:part name="reseller_branch_status_code" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_SET_RESELLER_SUB_CUSTOMER_STATUSHttpGetOut">
+    <wsdl:part name="Body" element="tns:Sonuc" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GETPROCESSNAMEHttpPostIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GETPROCESSNAMEHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfProcess_name" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_RETURN_VALUE_LISTHttpPostIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_RETURN_VALUE_LISTHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfCard_return_value" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CUSTOMER_GET_DETAILHttpPostIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CUSTOMER_GET_DETAILHttpPostOut">
+    <wsdl:part name="Body" element="tns:CustomerInfo" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_GET_DETAILHttpPostIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="cardNO" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_GET_DETAILHttpPostOut">
+    <wsdl:part name="Body" element="tns:CARD_InfoAndCredit" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_ADD_CARD_DFLT_CREDITHttpPostIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="card" type="s:string" />
+    <wsdl:part name="txt" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_ADD_CARD_DFLT_CREDITHttpPostOut">
+    <wsdl:part name="Body" element="tns:Sonuc" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CHANGE_PASSWORDHttpPostIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="newpwd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CHANGE_PASSWORDHttpPostOut">
+    <wsdl:part name="Body" element="tns:Sonuc" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_SET_TXTHttpPostIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="cardNO" type="s:string" />
+    <wsdl:part name="txt" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_SET_TXTHttpPostOut">
+    <wsdl:part name="Body" element="tns:Sonuc" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CUSTOMER_ASK_BALANCEHttpPostIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CUSTOMER_ASK_BALANCEHttpPostOut">
+    <wsdl:part name="Body" element="tns:Balance" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_ASK_BALANCEHttpPostIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="cardNO" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_ASK_BALANCEHttpPostOut">
+    <wsdl:part name="Body" element="tns:Balance" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_DISABLEHttpPostIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="cardNO" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_DISABLEHttpPostOut">
+    <wsdl:part name="Body" element="tns:Sonuc" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_BLACKLISTHttpPostIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="cardNO" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_BLACKLISTHttpPostOut">
+    <wsdl:part name="Body" element="tns:Sonuc" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_WHITELISTHttpPostIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="cardNO" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_CARD_WHITELISTHttpPostOut">
+    <wsdl:part name="Body" element="tns:Sonuc" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_ZERO_CARD_CREDITHttpPostIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="cardNO" type="s:string" />
+    <wsdl:part name="txt" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_ZERO_CARD_CREDITHttpPostOut">
+    <wsdl:part name="Body" element="tns:Sonuc" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_GET_XMLSHttpPostIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_GET_XMLSHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfBatchUpdateXml" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_XML_INSHttpPostIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="xml_filename" type="s:string" />
+    <wsdl:part name="xml_content" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_XML_INSHttpPostOut">
+    <wsdl:part name="Body" element="tns:Sonuc" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_XML_DELHttpPostIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="xml_fileno" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_XML_DELHttpPostOut">
+    <wsdl:part name="Body" element="tns:Sonuc" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_INSHttpPostIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="udt" type="s:string" />
+    <wsdl:part name="xml_fileno" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_INSHttpPostOut">
+    <wsdl:part name="Body" element="tns:Sonuc" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_UPDHttpPostIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="udt" type="s:string" />
+    <wsdl:part name="sequence" type="s:string" />
+    <wsdl:part name="xml_fileno" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_UPDHttpPostOut">
+    <wsdl:part name="Body" element="tns:Sonuc" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_GET_REC_ALLHttpPostIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_GET_REC_ALLHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfBatchUpdateMasterInfo" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_GET_REC_DETAILSHttpPostIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="xml_fileno" type="s:string" />
+    <wsdl:part name="sequence" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_GET_REC_DETAILSHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfBatchUpdateDetailInfo" />
+  </wsdl:message>
+  <wsdl:message name="testHttpPostIn" />
+  <wsdl:message name="testHttpPostOut" />
+  <wsdl:message name="PCARD_BATCH_UPDATES_GET_FROM_XMLNOHttpPostIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="xml_fileno" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATES_GET_FROM_XMLNOHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfBatchUpdateMasterInfo" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_DELHttpPostIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="sequence" type="s:string" />
+    <wsdl:part name="xml_fileno" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_BATCH_UPDATE_DELHttpPostOut">
+    <wsdl:part name="Body" element="tns:Sonuc" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_FORGET_PASSWORDHttpPostIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="email" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_FORGET_PASSWORDHttpPostOut">
+    <wsdl:part name="Body" element="tns:Sonuc" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_RESELLER_SUB_CUSTOMERSHttpPostIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_RESELLER_SUB_CUSTOMERSHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfResellerSubCustLimitInfo" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_RESELLERORNOTHttpPostIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_RESELLERORNOTHttpPostOut">
+    <wsdl:part name="Body" element="tns:CustTypeInfo" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_SET_RESELLER_SUB_CUSTOMER_LIMITHttpPostIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="reseller_branch_cd" type="s:string" />
+    <wsdl:part name="limit" type="s:string" />
+    <wsdl:part name="txt_load" type="s:string" />
+    <wsdl:part name="newlimitisbigger" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_SET_RESELLER_SUB_CUSTOMER_LIMITHttpPostOut">
+    <wsdl:part name="Body" element="tns:Sonuc" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_RESELLER_CUSTOMERINFOHttpPostIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_RESELLER_CUSTOMERINFOHttpPostOut">
+    <wsdl:part name="Body" element="tns:ResellerCustomerInfo" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_RESELLER_SUBCUSTOMER_CREDITDEBIT_DETAILHttpPostIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="reseller_branch_cd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_RESELLER_SUBCUSTOMER_CREDITDEBIT_DETAILHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfResellerSubCodeCreditDebitDetail" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_INVOICE_PDF_FOR_CUSTOMERHttpPostIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="reseller_branch_cd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_INVOICE_PDF_FOR_CUSTOMERHttpPostOut">
+    <wsdl:part name="Body" element="tns:PdfFileListResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GETPDFFILESTREAMHttpPostIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="pdf_filename" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GETPDFFILESTREAMHttpPostOut">
+    <wsdl:part name="Body" element="tns:PdfStreamResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFileHttpPostIn">
+    <wsdl:part name="filename" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFileHttpPostOut">
+    <wsdl:part name="Body" element="tns:base64Binary" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_RESELLER_SUBCUST_STATUSHttpPostIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="reseller_branch_cd" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_GET_RESELLER_SUBCUST_STATUSHttpPostOut">
+    <wsdl:part name="Body" element="tns:ResellerSubCodeStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_SET_RESELLER_SUB_CUSTOMER_STATUSHttpPostIn">
+    <wsdl:part name="custID" type="s:string" />
+    <wsdl:part name="userID" type="s:string" />
+    <wsdl:part name="pwd" type="s:string" />
+    <wsdl:part name="reseller_branch_cd" type="s:string" />
+    <wsdl:part name="reseller_branch_status_code" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PCARD_SET_RESELLER_SUB_CUSTOMER_STATUSHttpPostOut">
+    <wsdl:part name="Body" element="tns:Sonuc" />
+  </wsdl:message>
+  <wsdl:portType name="PartnerCardSoap">
+    <wsdl:operation name="PCARD_GETPROCESSNAME">
+      <wsdl:input message="tns:PCARD_GETPROCESSNAMESoapIn" />
+      <wsdl:output message="tns:PCARD_GETPROCESSNAMESoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_FILTER_DETAIL">
+      <wsdl:input message="tns:PCARD_CARD_FILTER_DETAILSoapIn" />
+      <wsdl:output message="tns:PCARD_CARD_FILTER_DETAILSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_RETURN_VALUE_LIST">
+      <wsdl:input message="tns:PCARD_RETURN_VALUE_LISTSoapIn" />
+      <wsdl:output message="tns:PCARD_RETURN_VALUE_LISTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_REMOVE_CARD_CREDIT">
+      <wsdl:input message="tns:PCARD_REMOVE_CARD_CREDITSoapIn" />
+      <wsdl:output message="tns:PCARD_REMOVE_CARD_CREDITSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_GETCARDBALANCE_HISTORY">
+      <wsdl:input message="tns:PCARD_CARD_GETCARDBALANCE_HISTORYSoapIn" />
+      <wsdl:output message="tns:PCARD_CARD_GETCARDBALANCE_HISTORYSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_GETCARDBALANCEDET_HISTORY">
+      <wsdl:input message="tns:PCARD_CARD_GETCARDBALANCEDET_HISTORYSoapIn" />
+      <wsdl:output message="tns:PCARD_CARD_GETCARDBALANCEDET_HISTORYSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_GETLOG">
+      <wsdl:input message="tns:PCARD_CARD_GETLOGSoapIn" />
+      <wsdl:output message="tns:PCARD_CARD_GETLOGSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CUSTOMER_GET_DETAIL">
+      <wsdl:input message="tns:PCARD_CUSTOMER_GET_DETAILSoapIn" />
+      <wsdl:output message="tns:PCARD_CUSTOMER_GET_DETAILSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_GET_DETAIL">
+      <wsdl:input message="tns:PCARD_CARD_GET_DETAILSoapIn" />
+      <wsdl:output message="tns:PCARD_CARD_GET_DETAILSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_SET_ALL">
+      <wsdl:input message="tns:PCARD_CARD_SET_ALLSoapIn" />
+      <wsdl:output message="tns:PCARD_CARD_SET_ALLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_ADD_CARD_DFLT_CREDIT">
+      <wsdl:input message="tns:PCARD_ADD_CARD_DFLT_CREDITSoapIn" />
+      <wsdl:output message="tns:PCARD_ADD_CARD_DFLT_CREDITSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CHANGE_PASSWORD">
+      <wsdl:input message="tns:PCARD_CHANGE_PASSWORDSoapIn" />
+      <wsdl:output message="tns:PCARD_CHANGE_PASSWORDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_SET_TXT">
+      <wsdl:input message="tns:PCARD_CARD_SET_TXTSoapIn" />
+      <wsdl:output message="tns:PCARD_CARD_SET_TXTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_SET_DFLT_CRD">
+      <wsdl:input message="tns:PCARD_CARD_SET_DFLT_CRDSoapIn" />
+      <wsdl:output message="tns:PCARD_CARD_SET_DFLT_CRDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_SET_CUSTOMER_MAX_LMT">
+      <wsdl:input message="tns:PCARD_CARD_SET_CUSTOMER_MAX_LMTSoapIn" />
+      <wsdl:output message="tns:PCARD_CARD_SET_CUSTOMER_MAX_LMTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CUSTOMER_ASK_BALANCE">
+      <wsdl:input message="tns:PCARD_CUSTOMER_ASK_BALANCESoapIn" />
+      <wsdl:output message="tns:PCARD_CUSTOMER_ASK_BALANCESoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_ASK_BALANCE">
+      <wsdl:input message="tns:PCARD_CARD_ASK_BALANCESoapIn" />
+      <wsdl:output message="tns:PCARD_CARD_ASK_BALANCESoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_ADD_CREDIT">
+      <wsdl:input message="tns:PCARD_CARD_ADD_CREDITSoapIn" />
+      <wsdl:output message="tns:PCARD_CARD_ADD_CREDITSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_DISABLE">
+      <wsdl:input message="tns:PCARD_CARD_DISABLESoapIn" />
+      <wsdl:output message="tns:PCARD_CARD_DISABLESoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_BLACKLIST">
+      <wsdl:input message="tns:PCARD_CARD_BLACKLISTSoapIn" />
+      <wsdl:output message="tns:PCARD_CARD_BLACKLISTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_WHITELIST">
+      <wsdl:input message="tns:PCARD_CARD_WHITELISTSoapIn" />
+      <wsdl:output message="tns:PCARD_CARD_WHITELISTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_TRANSFER_CREDIT">
+      <wsdl:input message="tns:PCARD_CARD_TRANSFER_CREDITSoapIn" />
+      <wsdl:output message="tns:PCARD_CARD_TRANSFER_CREDITSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_SET_DISCOUNT">
+      <wsdl:input message="tns:PCARD_CARD_SET_DISCOUNTSoapIn" />
+      <wsdl:output message="tns:PCARD_CARD_SET_DISCOUNTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_ZERO_CARD_CREDIT">
+      <wsdl:input message="tns:PCARD_ZERO_CARD_CREDITSoapIn" />
+      <wsdl:output message="tns:PCARD_ZERO_CARD_CREDITSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_GET_XMLS">
+      <wsdl:input message="tns:PCARD_BATCH_UPDATE_GET_XMLSSoapIn" />
+      <wsdl:output message="tns:PCARD_BATCH_UPDATE_GET_XMLSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_XML_INS">
+      <wsdl:input message="tns:PCARD_BATCH_UPDATE_XML_INSSoapIn" />
+      <wsdl:output message="tns:PCARD_BATCH_UPDATE_XML_INSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_XML_DEL">
+      <wsdl:input message="tns:PCARD_BATCH_UPDATE_XML_DELSoapIn" />
+      <wsdl:output message="tns:PCARD_BATCH_UPDATE_XML_DELSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_INS">
+      <wsdl:input message="tns:PCARD_BATCH_UPDATE_INSSoapIn" />
+      <wsdl:output message="tns:PCARD_BATCH_UPDATE_INSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_UPD">
+      <wsdl:input message="tns:PCARD_BATCH_UPDATE_UPDSoapIn" />
+      <wsdl:output message="tns:PCARD_BATCH_UPDATE_UPDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_GET_REC_ALL">
+      <wsdl:input message="tns:PCARD_BATCH_UPDATE_GET_REC_ALLSoapIn" />
+      <wsdl:output message="tns:PCARD_BATCH_UPDATE_GET_REC_ALLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_GET_REC_DETAILS">
+      <wsdl:input message="tns:PCARD_BATCH_UPDATE_GET_REC_DETAILSSoapIn" />
+      <wsdl:output message="tns:PCARD_BATCH_UPDATE_GET_REC_DETAILSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="test">
+      <wsdl:input message="tns:testSoapIn" />
+      <wsdl:output message="tns:testSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATES_GET_FROM_XMLNO">
+      <wsdl:input message="tns:PCARD_BATCH_UPDATES_GET_FROM_XMLNOSoapIn" />
+      <wsdl:output message="tns:PCARD_BATCH_UPDATES_GET_FROM_XMLNOSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_DEL">
+      <wsdl:input message="tns:PCARD_BATCH_UPDATE_DELSoapIn" />
+      <wsdl:output message="tns:PCARD_BATCH_UPDATE_DELSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_FORGET_PASSWORD">
+      <wsdl:input message="tns:PCARD_FORGET_PASSWORDSoapIn" />
+      <wsdl:output message="tns:PCARD_FORGET_PASSWORDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_CUSTOMER_SALES">
+      <wsdl:input message="tns:PCARD_GET_CUSTOMER_SALESSoapIn" />
+      <wsdl:output message="tns:PCARD_GET_CUSTOMER_SALESSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLER_SUB_CUSTOMERS">
+      <wsdl:input message="tns:PCARD_GET_RESELLER_SUB_CUSTOMERSSoapIn" />
+      <wsdl:output message="tns:PCARD_GET_RESELLER_SUB_CUSTOMERSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLERORNOT">
+      <wsdl:input message="tns:PCARD_GET_RESELLERORNOTSoapIn" />
+      <wsdl:output message="tns:PCARD_GET_RESELLERORNOTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_SET_RESELLER_SUB_CUSTOMER_LIMIT">
+      <wsdl:input message="tns:PCARD_SET_RESELLER_SUB_CUSTOMER_LIMITSoapIn" />
+      <wsdl:output message="tns:PCARD_SET_RESELLER_SUB_CUSTOMER_LIMITSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLER_CUSTOMERINFO">
+      <wsdl:input message="tns:PCARD_GET_RESELLER_CUSTOMERINFOSoapIn" />
+      <wsdl:output message="tns:PCARD_GET_RESELLER_CUSTOMERINFOSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLER_SUBCUSTOMER_CREDITDEBIT_DETAIL">
+      <wsdl:input message="tns:PCARD_GET_RESELLER_SUBCUSTOMER_CREDITDEBIT_DETAILSoapIn" />
+      <wsdl:output message="tns:PCARD_GET_RESELLER_SUBCUSTOMER_CREDITDEBIT_DETAILSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_INVOICE_PDF_FOR_CUSTOMER">
+      <wsdl:input message="tns:PCARD_GET_INVOICE_PDF_FOR_CUSTOMERSoapIn" />
+      <wsdl:output message="tns:PCARD_GET_INVOICE_PDF_FOR_CUSTOMERSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GETPDFFILESTREAM">
+      <wsdl:input message="tns:PCARD_GETPDFFILESTREAMSoapIn" />
+      <wsdl:output message="tns:PCARD_GETPDFFILESTREAMSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFile">
+      <wsdl:input message="tns:GetFileSoapIn" />
+      <wsdl:output message="tns:GetFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLER_SUBCUST_STATUS">
+      <wsdl:input message="tns:PCARD_GET_RESELLER_SUBCUST_STATUSSoapIn" />
+      <wsdl:output message="tns:PCARD_GET_RESELLER_SUBCUST_STATUSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_SET_RESELLER_SUB_CUSTOMER_STATUS">
+      <wsdl:input message="tns:PCARD_SET_RESELLER_SUB_CUSTOMER_STATUSSoapIn" />
+      <wsdl:output message="tns:PCARD_SET_RESELLER_SUB_CUSTOMER_STATUSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_CUSTOMER_SALES_WITH_INVOICE_DATE">
+      <wsdl:input message="tns:PCARD_GET_CUSTOMER_SALES_WITH_INVOICE_DATESoapIn" />
+      <wsdl:output message="tns:PCARD_GET_CUSTOMER_SALES_WITH_INVOICE_DATESoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="PartnerCardHttpGet">
+    <wsdl:operation name="PCARD_GETPROCESSNAME">
+      <wsdl:input message="tns:PCARD_GETPROCESSNAMEHttpGetIn" />
+      <wsdl:output message="tns:PCARD_GETPROCESSNAMEHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_RETURN_VALUE_LIST">
+      <wsdl:input message="tns:PCARD_RETURN_VALUE_LISTHttpGetIn" />
+      <wsdl:output message="tns:PCARD_RETURN_VALUE_LISTHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CUSTOMER_GET_DETAIL">
+      <wsdl:input message="tns:PCARD_CUSTOMER_GET_DETAILHttpGetIn" />
+      <wsdl:output message="tns:PCARD_CUSTOMER_GET_DETAILHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_GET_DETAIL">
+      <wsdl:input message="tns:PCARD_CARD_GET_DETAILHttpGetIn" />
+      <wsdl:output message="tns:PCARD_CARD_GET_DETAILHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_ADD_CARD_DFLT_CREDIT">
+      <wsdl:input message="tns:PCARD_ADD_CARD_DFLT_CREDITHttpGetIn" />
+      <wsdl:output message="tns:PCARD_ADD_CARD_DFLT_CREDITHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CHANGE_PASSWORD">
+      <wsdl:input message="tns:PCARD_CHANGE_PASSWORDHttpGetIn" />
+      <wsdl:output message="tns:PCARD_CHANGE_PASSWORDHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_SET_TXT">
+      <wsdl:input message="tns:PCARD_CARD_SET_TXTHttpGetIn" />
+      <wsdl:output message="tns:PCARD_CARD_SET_TXTHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CUSTOMER_ASK_BALANCE">
+      <wsdl:input message="tns:PCARD_CUSTOMER_ASK_BALANCEHttpGetIn" />
+      <wsdl:output message="tns:PCARD_CUSTOMER_ASK_BALANCEHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_ASK_BALANCE">
+      <wsdl:input message="tns:PCARD_CARD_ASK_BALANCEHttpGetIn" />
+      <wsdl:output message="tns:PCARD_CARD_ASK_BALANCEHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_DISABLE">
+      <wsdl:input message="tns:PCARD_CARD_DISABLEHttpGetIn" />
+      <wsdl:output message="tns:PCARD_CARD_DISABLEHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_BLACKLIST">
+      <wsdl:input message="tns:PCARD_CARD_BLACKLISTHttpGetIn" />
+      <wsdl:output message="tns:PCARD_CARD_BLACKLISTHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_WHITELIST">
+      <wsdl:input message="tns:PCARD_CARD_WHITELISTHttpGetIn" />
+      <wsdl:output message="tns:PCARD_CARD_WHITELISTHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_ZERO_CARD_CREDIT">
+      <wsdl:input message="tns:PCARD_ZERO_CARD_CREDITHttpGetIn" />
+      <wsdl:output message="tns:PCARD_ZERO_CARD_CREDITHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_GET_XMLS">
+      <wsdl:input message="tns:PCARD_BATCH_UPDATE_GET_XMLSHttpGetIn" />
+      <wsdl:output message="tns:PCARD_BATCH_UPDATE_GET_XMLSHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_XML_INS">
+      <wsdl:input message="tns:PCARD_BATCH_UPDATE_XML_INSHttpGetIn" />
+      <wsdl:output message="tns:PCARD_BATCH_UPDATE_XML_INSHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_XML_DEL">
+      <wsdl:input message="tns:PCARD_BATCH_UPDATE_XML_DELHttpGetIn" />
+      <wsdl:output message="tns:PCARD_BATCH_UPDATE_XML_DELHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_INS">
+      <wsdl:input message="tns:PCARD_BATCH_UPDATE_INSHttpGetIn" />
+      <wsdl:output message="tns:PCARD_BATCH_UPDATE_INSHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_UPD">
+      <wsdl:input message="tns:PCARD_BATCH_UPDATE_UPDHttpGetIn" />
+      <wsdl:output message="tns:PCARD_BATCH_UPDATE_UPDHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_GET_REC_ALL">
+      <wsdl:input message="tns:PCARD_BATCH_UPDATE_GET_REC_ALLHttpGetIn" />
+      <wsdl:output message="tns:PCARD_BATCH_UPDATE_GET_REC_ALLHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_GET_REC_DETAILS">
+      <wsdl:input message="tns:PCARD_BATCH_UPDATE_GET_REC_DETAILSHttpGetIn" />
+      <wsdl:output message="tns:PCARD_BATCH_UPDATE_GET_REC_DETAILSHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="test">
+      <wsdl:input message="tns:testHttpGetIn" />
+      <wsdl:output message="tns:testHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATES_GET_FROM_XMLNO">
+      <wsdl:input message="tns:PCARD_BATCH_UPDATES_GET_FROM_XMLNOHttpGetIn" />
+      <wsdl:output message="tns:PCARD_BATCH_UPDATES_GET_FROM_XMLNOHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_DEL">
+      <wsdl:input message="tns:PCARD_BATCH_UPDATE_DELHttpGetIn" />
+      <wsdl:output message="tns:PCARD_BATCH_UPDATE_DELHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_FORGET_PASSWORD">
+      <wsdl:input message="tns:PCARD_FORGET_PASSWORDHttpGetIn" />
+      <wsdl:output message="tns:PCARD_FORGET_PASSWORDHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLER_SUB_CUSTOMERS">
+      <wsdl:input message="tns:PCARD_GET_RESELLER_SUB_CUSTOMERSHttpGetIn" />
+      <wsdl:output message="tns:PCARD_GET_RESELLER_SUB_CUSTOMERSHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLERORNOT">
+      <wsdl:input message="tns:PCARD_GET_RESELLERORNOTHttpGetIn" />
+      <wsdl:output message="tns:PCARD_GET_RESELLERORNOTHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_SET_RESELLER_SUB_CUSTOMER_LIMIT">
+      <wsdl:input message="tns:PCARD_SET_RESELLER_SUB_CUSTOMER_LIMITHttpGetIn" />
+      <wsdl:output message="tns:PCARD_SET_RESELLER_SUB_CUSTOMER_LIMITHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLER_CUSTOMERINFO">
+      <wsdl:input message="tns:PCARD_GET_RESELLER_CUSTOMERINFOHttpGetIn" />
+      <wsdl:output message="tns:PCARD_GET_RESELLER_CUSTOMERINFOHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLER_SUBCUSTOMER_CREDITDEBIT_DETAIL">
+      <wsdl:input message="tns:PCARD_GET_RESELLER_SUBCUSTOMER_CREDITDEBIT_DETAILHttpGetIn" />
+      <wsdl:output message="tns:PCARD_GET_RESELLER_SUBCUSTOMER_CREDITDEBIT_DETAILHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_INVOICE_PDF_FOR_CUSTOMER">
+      <wsdl:input message="tns:PCARD_GET_INVOICE_PDF_FOR_CUSTOMERHttpGetIn" />
+      <wsdl:output message="tns:PCARD_GET_INVOICE_PDF_FOR_CUSTOMERHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GETPDFFILESTREAM">
+      <wsdl:input message="tns:PCARD_GETPDFFILESTREAMHttpGetIn" />
+      <wsdl:output message="tns:PCARD_GETPDFFILESTREAMHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFile">
+      <wsdl:input message="tns:GetFileHttpGetIn" />
+      <wsdl:output message="tns:GetFileHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLER_SUBCUST_STATUS">
+      <wsdl:input message="tns:PCARD_GET_RESELLER_SUBCUST_STATUSHttpGetIn" />
+      <wsdl:output message="tns:PCARD_GET_RESELLER_SUBCUST_STATUSHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_SET_RESELLER_SUB_CUSTOMER_STATUS">
+      <wsdl:input message="tns:PCARD_SET_RESELLER_SUB_CUSTOMER_STATUSHttpGetIn" />
+      <wsdl:output message="tns:PCARD_SET_RESELLER_SUB_CUSTOMER_STATUSHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="PartnerCardHttpPost">
+    <wsdl:operation name="PCARD_GETPROCESSNAME">
+      <wsdl:input message="tns:PCARD_GETPROCESSNAMEHttpPostIn" />
+      <wsdl:output message="tns:PCARD_GETPROCESSNAMEHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_RETURN_VALUE_LIST">
+      <wsdl:input message="tns:PCARD_RETURN_VALUE_LISTHttpPostIn" />
+      <wsdl:output message="tns:PCARD_RETURN_VALUE_LISTHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CUSTOMER_GET_DETAIL">
+      <wsdl:input message="tns:PCARD_CUSTOMER_GET_DETAILHttpPostIn" />
+      <wsdl:output message="tns:PCARD_CUSTOMER_GET_DETAILHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_GET_DETAIL">
+      <wsdl:input message="tns:PCARD_CARD_GET_DETAILHttpPostIn" />
+      <wsdl:output message="tns:PCARD_CARD_GET_DETAILHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_ADD_CARD_DFLT_CREDIT">
+      <wsdl:input message="tns:PCARD_ADD_CARD_DFLT_CREDITHttpPostIn" />
+      <wsdl:output message="tns:PCARD_ADD_CARD_DFLT_CREDITHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CHANGE_PASSWORD">
+      <wsdl:input message="tns:PCARD_CHANGE_PASSWORDHttpPostIn" />
+      <wsdl:output message="tns:PCARD_CHANGE_PASSWORDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_SET_TXT">
+      <wsdl:input message="tns:PCARD_CARD_SET_TXTHttpPostIn" />
+      <wsdl:output message="tns:PCARD_CARD_SET_TXTHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CUSTOMER_ASK_BALANCE">
+      <wsdl:input message="tns:PCARD_CUSTOMER_ASK_BALANCEHttpPostIn" />
+      <wsdl:output message="tns:PCARD_CUSTOMER_ASK_BALANCEHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_ASK_BALANCE">
+      <wsdl:input message="tns:PCARD_CARD_ASK_BALANCEHttpPostIn" />
+      <wsdl:output message="tns:PCARD_CARD_ASK_BALANCEHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_DISABLE">
+      <wsdl:input message="tns:PCARD_CARD_DISABLEHttpPostIn" />
+      <wsdl:output message="tns:PCARD_CARD_DISABLEHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_BLACKLIST">
+      <wsdl:input message="tns:PCARD_CARD_BLACKLISTHttpPostIn" />
+      <wsdl:output message="tns:PCARD_CARD_BLACKLISTHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_WHITELIST">
+      <wsdl:input message="tns:PCARD_CARD_WHITELISTHttpPostIn" />
+      <wsdl:output message="tns:PCARD_CARD_WHITELISTHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_ZERO_CARD_CREDIT">
+      <wsdl:input message="tns:PCARD_ZERO_CARD_CREDITHttpPostIn" />
+      <wsdl:output message="tns:PCARD_ZERO_CARD_CREDITHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_GET_XMLS">
+      <wsdl:input message="tns:PCARD_BATCH_UPDATE_GET_XMLSHttpPostIn" />
+      <wsdl:output message="tns:PCARD_BATCH_UPDATE_GET_XMLSHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_XML_INS">
+      <wsdl:input message="tns:PCARD_BATCH_UPDATE_XML_INSHttpPostIn" />
+      <wsdl:output message="tns:PCARD_BATCH_UPDATE_XML_INSHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_XML_DEL">
+      <wsdl:input message="tns:PCARD_BATCH_UPDATE_XML_DELHttpPostIn" />
+      <wsdl:output message="tns:PCARD_BATCH_UPDATE_XML_DELHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_INS">
+      <wsdl:input message="tns:PCARD_BATCH_UPDATE_INSHttpPostIn" />
+      <wsdl:output message="tns:PCARD_BATCH_UPDATE_INSHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_UPD">
+      <wsdl:input message="tns:PCARD_BATCH_UPDATE_UPDHttpPostIn" />
+      <wsdl:output message="tns:PCARD_BATCH_UPDATE_UPDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_GET_REC_ALL">
+      <wsdl:input message="tns:PCARD_BATCH_UPDATE_GET_REC_ALLHttpPostIn" />
+      <wsdl:output message="tns:PCARD_BATCH_UPDATE_GET_REC_ALLHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_GET_REC_DETAILS">
+      <wsdl:input message="tns:PCARD_BATCH_UPDATE_GET_REC_DETAILSHttpPostIn" />
+      <wsdl:output message="tns:PCARD_BATCH_UPDATE_GET_REC_DETAILSHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="test">
+      <wsdl:input message="tns:testHttpPostIn" />
+      <wsdl:output message="tns:testHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATES_GET_FROM_XMLNO">
+      <wsdl:input message="tns:PCARD_BATCH_UPDATES_GET_FROM_XMLNOHttpPostIn" />
+      <wsdl:output message="tns:PCARD_BATCH_UPDATES_GET_FROM_XMLNOHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_DEL">
+      <wsdl:input message="tns:PCARD_BATCH_UPDATE_DELHttpPostIn" />
+      <wsdl:output message="tns:PCARD_BATCH_UPDATE_DELHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_FORGET_PASSWORD">
+      <wsdl:input message="tns:PCARD_FORGET_PASSWORDHttpPostIn" />
+      <wsdl:output message="tns:PCARD_FORGET_PASSWORDHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLER_SUB_CUSTOMERS">
+      <wsdl:input message="tns:PCARD_GET_RESELLER_SUB_CUSTOMERSHttpPostIn" />
+      <wsdl:output message="tns:PCARD_GET_RESELLER_SUB_CUSTOMERSHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLERORNOT">
+      <wsdl:input message="tns:PCARD_GET_RESELLERORNOTHttpPostIn" />
+      <wsdl:output message="tns:PCARD_GET_RESELLERORNOTHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_SET_RESELLER_SUB_CUSTOMER_LIMIT">
+      <wsdl:input message="tns:PCARD_SET_RESELLER_SUB_CUSTOMER_LIMITHttpPostIn" />
+      <wsdl:output message="tns:PCARD_SET_RESELLER_SUB_CUSTOMER_LIMITHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLER_CUSTOMERINFO">
+      <wsdl:input message="tns:PCARD_GET_RESELLER_CUSTOMERINFOHttpPostIn" />
+      <wsdl:output message="tns:PCARD_GET_RESELLER_CUSTOMERINFOHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLER_SUBCUSTOMER_CREDITDEBIT_DETAIL">
+      <wsdl:input message="tns:PCARD_GET_RESELLER_SUBCUSTOMER_CREDITDEBIT_DETAILHttpPostIn" />
+      <wsdl:output message="tns:PCARD_GET_RESELLER_SUBCUSTOMER_CREDITDEBIT_DETAILHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_INVOICE_PDF_FOR_CUSTOMER">
+      <wsdl:input message="tns:PCARD_GET_INVOICE_PDF_FOR_CUSTOMERHttpPostIn" />
+      <wsdl:output message="tns:PCARD_GET_INVOICE_PDF_FOR_CUSTOMERHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GETPDFFILESTREAM">
+      <wsdl:input message="tns:PCARD_GETPDFFILESTREAMHttpPostIn" />
+      <wsdl:output message="tns:PCARD_GETPDFFILESTREAMHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFile">
+      <wsdl:input message="tns:GetFileHttpPostIn" />
+      <wsdl:output message="tns:GetFileHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLER_SUBCUST_STATUS">
+      <wsdl:input message="tns:PCARD_GET_RESELLER_SUBCUST_STATUSHttpPostIn" />
+      <wsdl:output message="tns:PCARD_GET_RESELLER_SUBCUST_STATUSHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_SET_RESELLER_SUB_CUSTOMER_STATUS">
+      <wsdl:input message="tns:PCARD_SET_RESELLER_SUB_CUSTOMER_STATUSHttpPostIn" />
+      <wsdl:output message="tns:PCARD_SET_RESELLER_SUB_CUSTOMER_STATUSHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PartnerCardSoap" type="tns:PartnerCardSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="PCARD_GETPROCESSNAME">
+      <soap:operation soapAction="http://tempuri.org/PCARD_GETPROCESSNAME" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_FILTER_DETAIL">
+      <soap:operation soapAction="http://tempuri.org/PCARD_CARD_FILTER_DETAIL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_RETURN_VALUE_LIST">
+      <soap:operation soapAction="http://tempuri.org/PCARD_RETURN_VALUE_LIST" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_REMOVE_CARD_CREDIT">
+      <soap:operation soapAction="http://tempuri.org/PCARD_REMOVE_CARD_CREDIT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_GETCARDBALANCE_HISTORY">
+      <soap:operation soapAction="http://tempuri.org/PCARD_CARD_GETCARDBALANCE_HISTORY" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_GETCARDBALANCEDET_HISTORY">
+      <soap:operation soapAction="http://tempuri.org/PCARD_CARD_GETCARDBALANCEDET_HISTORY" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_GETLOG">
+      <soap:operation soapAction="http://tempuri.org/PCARD_CARD_GETLOG" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CUSTOMER_GET_DETAIL">
+      <soap:operation soapAction="http://tempuri.org/PCARD_CUSTOMER_GET_DETAIL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_GET_DETAIL">
+      <soap:operation soapAction="http://tempuri.org/PCARD_CARD_GET_DETAIL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_SET_ALL">
+      <soap:operation soapAction="http://tempuri.org/PCARD_CARD_SET_ALL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_ADD_CARD_DFLT_CREDIT">
+      <soap:operation soapAction="http://tempuri.org/PCARD_ADD_CARD_DFLT_CREDIT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CHANGE_PASSWORD">
+      <soap:operation soapAction="http://tempuri.org/PCARD_CHANGE_PASSWORD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_SET_TXT">
+      <soap:operation soapAction="http://tempuri.org/PCARD_CARD_SET_TXT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_SET_DFLT_CRD">
+      <soap:operation soapAction="http://tempuri.org/PCARD_CARD_SET_DFLT_CRD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_SET_CUSTOMER_MAX_LMT">
+      <soap:operation soapAction="http://tempuri.org/PCARD_CARD_SET_CUSTOMER_MAX_LMT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CUSTOMER_ASK_BALANCE">
+      <soap:operation soapAction="http://tempuri.org/PCARD_CUSTOMER_ASK_BALANCE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_ASK_BALANCE">
+      <soap:operation soapAction="http://tempuri.org/PCARD_CARD_ASK_BALANCE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_ADD_CREDIT">
+      <soap:operation soapAction="http://tempuri.org/PCARD_CARD_ADD_CREDIT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_DISABLE">
+      <soap:operation soapAction="http://tempuri.org/PCARD_CARD_DISABLE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_BLACKLIST">
+      <soap:operation soapAction="http://tempuri.org/PCARD_CARD_BLACKLIST" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_WHITELIST">
+      <soap:operation soapAction="http://tempuri.org/PCARD_CARD_WHITELIST" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_TRANSFER_CREDIT">
+      <soap:operation soapAction="http://tempuri.org/PCARD_CARD_TRANSFER_CREDIT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_SET_DISCOUNT">
+      <soap:operation soapAction="http://tempuri.org/PCARD_CARD_SET_DISCOUNT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_ZERO_CARD_CREDIT">
+      <soap:operation soapAction="http://tempuri.org/PCARD_ZERO_CARD_CREDIT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_GET_XMLS">
+      <soap:operation soapAction="http://tempuri.org/PCARD_BATCH_UPDATE_GET_XMLS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_XML_INS">
+      <soap:operation soapAction="http://tempuri.org/PCARD_BATCH_UPDATE_XML_INS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_XML_DEL">
+      <soap:operation soapAction="http://tempuri.org/PCARD_BATCH_UPDATE_XML_DEL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_INS">
+      <soap:operation soapAction="http://tempuri.org/PCARD_BATCH_UPDATE_INS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_UPD">
+      <soap:operation soapAction="http://tempuri.org/PCARD_BATCH_UPDATE_UPD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_GET_REC_ALL">
+      <soap:operation soapAction="http://tempuri.org/PCARD_BATCH_UPDATE_GET_REC_ALL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_GET_REC_DETAILS">
+      <soap:operation soapAction="http://tempuri.org/PCARD_BATCH_UPDATE_GET_REC_DETAILS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="test">
+      <soap:operation soapAction="http://tempuri.org/test" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATES_GET_FROM_XMLNO">
+      <soap:operation soapAction="http://tempuri.org/PCARD_BATCH_UPDATES_GET_FROM_XMLNO" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_DEL">
+      <soap:operation soapAction="http://tempuri.org/PCARD_BATCH_UPDATE_DEL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_FORGET_PASSWORD">
+      <soap:operation soapAction="http://tempuri.org/PCARD_FORGET_PASSWORD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_CUSTOMER_SALES">
+      <soap:operation soapAction="http://tempuri.org/PCARD_GET_CUSTOMER_SALES" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLER_SUB_CUSTOMERS">
+      <soap:operation soapAction="http://tempuri.org/PCARD_GET_RESELLER_SUB_CUSTOMERS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLERORNOT">
+      <soap:operation soapAction="http://tempuri.org/PCARD_GET_RESELLERORNOT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_SET_RESELLER_SUB_CUSTOMER_LIMIT">
+      <soap:operation soapAction="http://tempuri.org/PCARD_SET_RESELLER_SUB_CUSTOMER_LIMIT" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLER_CUSTOMERINFO">
+      <soap:operation soapAction="http://tempuri.org/PCARD_GET_RESELLER_CUSTOMERINFO" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLER_SUBCUSTOMER_CREDITDEBIT_DETAIL">
+      <soap:operation soapAction="http://tempuri.org/PCARD_GET_RESELLER_SUBCUSTOMER_CREDITDEBIT_DETAIL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_INVOICE_PDF_FOR_CUSTOMER">
+      <soap:operation soapAction="http://tempuri.org/PCARD_GET_INVOICE_PDF_FOR_CUSTOMER" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GETPDFFILESTREAM">
+      <soap:operation soapAction="http://tempuri.org/PCARD_GETPDFFILESTREAM" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFile">
+      <soap:operation soapAction="http://tempuri.org/GetFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLER_SUBCUST_STATUS">
+      <soap:operation soapAction="http://tempuri.org/PCARD_GET_RESELLER_SUBCUST_STATUS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_SET_RESELLER_SUB_CUSTOMER_STATUS">
+      <soap:operation soapAction="http://tempuri.org/PCARD_SET_RESELLER_SUB_CUSTOMER_STATUS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_CUSTOMER_SALES_WITH_INVOICE_DATE">
+      <soap:operation soapAction="http://tempuri.org/PCARD_GET_CUSTOMER_SALES_WITH_INVOICE_DATE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PartnerCardSoap12" type="tns:PartnerCardSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="PCARD_GETPROCESSNAME">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_GETPROCESSNAME" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_FILTER_DETAIL">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_CARD_FILTER_DETAIL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_RETURN_VALUE_LIST">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_RETURN_VALUE_LIST" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_REMOVE_CARD_CREDIT">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_REMOVE_CARD_CREDIT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_GETCARDBALANCE_HISTORY">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_CARD_GETCARDBALANCE_HISTORY" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_GETCARDBALANCEDET_HISTORY">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_CARD_GETCARDBALANCEDET_HISTORY" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_GETLOG">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_CARD_GETLOG" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CUSTOMER_GET_DETAIL">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_CUSTOMER_GET_DETAIL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_GET_DETAIL">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_CARD_GET_DETAIL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_SET_ALL">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_CARD_SET_ALL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_ADD_CARD_DFLT_CREDIT">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_ADD_CARD_DFLT_CREDIT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CHANGE_PASSWORD">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_CHANGE_PASSWORD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_SET_TXT">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_CARD_SET_TXT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_SET_DFLT_CRD">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_CARD_SET_DFLT_CRD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_SET_CUSTOMER_MAX_LMT">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_CARD_SET_CUSTOMER_MAX_LMT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CUSTOMER_ASK_BALANCE">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_CUSTOMER_ASK_BALANCE" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_ASK_BALANCE">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_CARD_ASK_BALANCE" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_ADD_CREDIT">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_CARD_ADD_CREDIT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_DISABLE">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_CARD_DISABLE" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_BLACKLIST">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_CARD_BLACKLIST" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_WHITELIST">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_CARD_WHITELIST" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_TRANSFER_CREDIT">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_CARD_TRANSFER_CREDIT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_SET_DISCOUNT">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_CARD_SET_DISCOUNT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_ZERO_CARD_CREDIT">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_ZERO_CARD_CREDIT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_GET_XMLS">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_BATCH_UPDATE_GET_XMLS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_XML_INS">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_BATCH_UPDATE_XML_INS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_XML_DEL">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_BATCH_UPDATE_XML_DEL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_INS">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_BATCH_UPDATE_INS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_UPD">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_BATCH_UPDATE_UPD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_GET_REC_ALL">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_BATCH_UPDATE_GET_REC_ALL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_GET_REC_DETAILS">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_BATCH_UPDATE_GET_REC_DETAILS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="test">
+      <soap12:operation soapAction="http://tempuri.org/test" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATES_GET_FROM_XMLNO">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_BATCH_UPDATES_GET_FROM_XMLNO" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_DEL">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_BATCH_UPDATE_DEL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_FORGET_PASSWORD">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_FORGET_PASSWORD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_CUSTOMER_SALES">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_GET_CUSTOMER_SALES" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLER_SUB_CUSTOMERS">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_GET_RESELLER_SUB_CUSTOMERS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLERORNOT">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_GET_RESELLERORNOT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_SET_RESELLER_SUB_CUSTOMER_LIMIT">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_SET_RESELLER_SUB_CUSTOMER_LIMIT" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLER_CUSTOMERINFO">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_GET_RESELLER_CUSTOMERINFO" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLER_SUBCUSTOMER_CREDITDEBIT_DETAIL">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_GET_RESELLER_SUBCUSTOMER_CREDITDEBIT_DETAIL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_INVOICE_PDF_FOR_CUSTOMER">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_GET_INVOICE_PDF_FOR_CUSTOMER" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GETPDFFILESTREAM">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_GETPDFFILESTREAM" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFile">
+      <soap12:operation soapAction="http://tempuri.org/GetFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLER_SUBCUST_STATUS">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_GET_RESELLER_SUBCUST_STATUS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_SET_RESELLER_SUB_CUSTOMER_STATUS">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_SET_RESELLER_SUB_CUSTOMER_STATUS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_CUSTOMER_SALES_WITH_INVOICE_DATE">
+      <soap12:operation soapAction="http://tempuri.org/PCARD_GET_CUSTOMER_SALES_WITH_INVOICE_DATE" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PartnerCardHttpGet" type="tns:PartnerCardHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="PCARD_GETPROCESSNAME">
+      <http:operation location="/PCARD_GETPROCESSNAME" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_RETURN_VALUE_LIST">
+      <http:operation location="/PCARD_RETURN_VALUE_LIST" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CUSTOMER_GET_DETAIL">
+      <http:operation location="/PCARD_CUSTOMER_GET_DETAIL" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_GET_DETAIL">
+      <http:operation location="/PCARD_CARD_GET_DETAIL" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_ADD_CARD_DFLT_CREDIT">
+      <http:operation location="/PCARD_ADD_CARD_DFLT_CREDIT" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CHANGE_PASSWORD">
+      <http:operation location="/PCARD_CHANGE_PASSWORD" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_SET_TXT">
+      <http:operation location="/PCARD_CARD_SET_TXT" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CUSTOMER_ASK_BALANCE">
+      <http:operation location="/PCARD_CUSTOMER_ASK_BALANCE" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_ASK_BALANCE">
+      <http:operation location="/PCARD_CARD_ASK_BALANCE" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_DISABLE">
+      <http:operation location="/PCARD_CARD_DISABLE" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_BLACKLIST">
+      <http:operation location="/PCARD_CARD_BLACKLIST" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_WHITELIST">
+      <http:operation location="/PCARD_CARD_WHITELIST" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_ZERO_CARD_CREDIT">
+      <http:operation location="/PCARD_ZERO_CARD_CREDIT" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_GET_XMLS">
+      <http:operation location="/PCARD_BATCH_UPDATE_GET_XMLS" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_XML_INS">
+      <http:operation location="/PCARD_BATCH_UPDATE_XML_INS" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_XML_DEL">
+      <http:operation location="/PCARD_BATCH_UPDATE_XML_DEL" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_INS">
+      <http:operation location="/PCARD_BATCH_UPDATE_INS" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_UPD">
+      <http:operation location="/PCARD_BATCH_UPDATE_UPD" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_GET_REC_ALL">
+      <http:operation location="/PCARD_BATCH_UPDATE_GET_REC_ALL" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_GET_REC_DETAILS">
+      <http:operation location="/PCARD_BATCH_UPDATE_GET_REC_DETAILS" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="test">
+      <http:operation location="/test" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATES_GET_FROM_XMLNO">
+      <http:operation location="/PCARD_BATCH_UPDATES_GET_FROM_XMLNO" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_DEL">
+      <http:operation location="/PCARD_BATCH_UPDATE_DEL" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_FORGET_PASSWORD">
+      <http:operation location="/PCARD_FORGET_PASSWORD" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLER_SUB_CUSTOMERS">
+      <http:operation location="/PCARD_GET_RESELLER_SUB_CUSTOMERS" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLERORNOT">
+      <http:operation location="/PCARD_GET_RESELLERORNOT" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_SET_RESELLER_SUB_CUSTOMER_LIMIT">
+      <http:operation location="/PCARD_SET_RESELLER_SUB_CUSTOMER_LIMIT" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLER_CUSTOMERINFO">
+      <http:operation location="/PCARD_GET_RESELLER_CUSTOMERINFO" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLER_SUBCUSTOMER_CREDITDEBIT_DETAIL">
+      <http:operation location="/PCARD_GET_RESELLER_SUBCUSTOMER_CREDITDEBIT_DETAIL" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_INVOICE_PDF_FOR_CUSTOMER">
+      <http:operation location="/PCARD_GET_INVOICE_PDF_FOR_CUSTOMER" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GETPDFFILESTREAM">
+      <http:operation location="/PCARD_GETPDFFILESTREAM" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFile">
+      <http:operation location="/GetFile" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLER_SUBCUST_STATUS">
+      <http:operation location="/PCARD_GET_RESELLER_SUBCUST_STATUS" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_SET_RESELLER_SUB_CUSTOMER_STATUS">
+      <http:operation location="/PCARD_SET_RESELLER_SUB_CUSTOMER_STATUS" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PartnerCardHttpPost" type="tns:PartnerCardHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="PCARD_GETPROCESSNAME">
+      <http:operation location="/PCARD_GETPROCESSNAME" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_RETURN_VALUE_LIST">
+      <http:operation location="/PCARD_RETURN_VALUE_LIST" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CUSTOMER_GET_DETAIL">
+      <http:operation location="/PCARD_CUSTOMER_GET_DETAIL" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_GET_DETAIL">
+      <http:operation location="/PCARD_CARD_GET_DETAIL" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_ADD_CARD_DFLT_CREDIT">
+      <http:operation location="/PCARD_ADD_CARD_DFLT_CREDIT" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CHANGE_PASSWORD">
+      <http:operation location="/PCARD_CHANGE_PASSWORD" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_SET_TXT">
+      <http:operation location="/PCARD_CARD_SET_TXT" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CUSTOMER_ASK_BALANCE">
+      <http:operation location="/PCARD_CUSTOMER_ASK_BALANCE" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_ASK_BALANCE">
+      <http:operation location="/PCARD_CARD_ASK_BALANCE" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_DISABLE">
+      <http:operation location="/PCARD_CARD_DISABLE" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_BLACKLIST">
+      <http:operation location="/PCARD_CARD_BLACKLIST" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_CARD_WHITELIST">
+      <http:operation location="/PCARD_CARD_WHITELIST" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_ZERO_CARD_CREDIT">
+      <http:operation location="/PCARD_ZERO_CARD_CREDIT" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_GET_XMLS">
+      <http:operation location="/PCARD_BATCH_UPDATE_GET_XMLS" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_XML_INS">
+      <http:operation location="/PCARD_BATCH_UPDATE_XML_INS" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_XML_DEL">
+      <http:operation location="/PCARD_BATCH_UPDATE_XML_DEL" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_INS">
+      <http:operation location="/PCARD_BATCH_UPDATE_INS" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_UPD">
+      <http:operation location="/PCARD_BATCH_UPDATE_UPD" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_GET_REC_ALL">
+      <http:operation location="/PCARD_BATCH_UPDATE_GET_REC_ALL" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_GET_REC_DETAILS">
+      <http:operation location="/PCARD_BATCH_UPDATE_GET_REC_DETAILS" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="test">
+      <http:operation location="/test" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATES_GET_FROM_XMLNO">
+      <http:operation location="/PCARD_BATCH_UPDATES_GET_FROM_XMLNO" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_BATCH_UPDATE_DEL">
+      <http:operation location="/PCARD_BATCH_UPDATE_DEL" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_FORGET_PASSWORD">
+      <http:operation location="/PCARD_FORGET_PASSWORD" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLER_SUB_CUSTOMERS">
+      <http:operation location="/PCARD_GET_RESELLER_SUB_CUSTOMERS" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLERORNOT">
+      <http:operation location="/PCARD_GET_RESELLERORNOT" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_SET_RESELLER_SUB_CUSTOMER_LIMIT">
+      <http:operation location="/PCARD_SET_RESELLER_SUB_CUSTOMER_LIMIT" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLER_CUSTOMERINFO">
+      <http:operation location="/PCARD_GET_RESELLER_CUSTOMERINFO" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLER_SUBCUSTOMER_CREDITDEBIT_DETAIL">
+      <http:operation location="/PCARD_GET_RESELLER_SUBCUSTOMER_CREDITDEBIT_DETAIL" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_INVOICE_PDF_FOR_CUSTOMER">
+      <http:operation location="/PCARD_GET_INVOICE_PDF_FOR_CUSTOMER" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GETPDFFILESTREAM">
+      <http:operation location="/PCARD_GETPDFFILESTREAM" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFile">
+      <http:operation location="/GetFile" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_GET_RESELLER_SUBCUST_STATUS">
+      <http:operation location="/PCARD_GET_RESELLER_SUBCUST_STATUS" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PCARD_SET_RESELLER_SUB_CUSTOMER_STATUS">
+      <http:operation location="/PCARD_SET_RESELLER_SUB_CUSTOMER_STATUS" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PartnerCard">
+    <wsdl:port name="PartnerCardSoap" binding="tns:PartnerCardSoap">
+      <soap:address location="https://partnercard.turkiyeshell.com/partnercard/partnercard.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PartnerCardSoap12" binding="tns:PartnerCardSoap12">
+      <soap12:address location="https://partnercard.turkiyeshell.com/partnercard/partnercard.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PartnerCardHttpGet" binding="tns:PartnerCardHttpGet">
+      <http:address location="https://partnercard.turkiyeshell.com/partnercard/partnercard.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PartnerCardHttpPost" binding="tns:PartnerCardHttpPost">
+      <http:address location="https://partnercard.turkiyeshell.com/partnercard/partnercard.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
